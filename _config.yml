@@ -24,8 +24,9 @@ title: envio
 email: humblepenguinnoffical@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Envio is a command-line tool that simplifies the management of environment variables across multiple profiles. It allows users to easily switch between different configurations and apply them to their current environment
-baseurl: "/envio" # the subpath of your site, e.g. /blog
+baseurl: "/envio/" # the subpath of your site, e.g. /blog
 url: "https://humblepenguinn.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+domain: humblepenguinn.github.io
 github_username:  humblepenguinn
 
 # Build settings
