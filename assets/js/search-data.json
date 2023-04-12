@@ -1,0 +1,205 @@
+{"0": {
+    "doc": "About",
+    "title": "About",
+    "content": "envio is an open source CLI tool that helps make managing environment variables a breeze. With envio, users can create encrypted profiles that contain a collection of environment variables associated with a specific project or use case. envio ensures security and simplifies the development process by allowing users to easily switch between profiles as needed and load them in their current terminal session for immediate use. Some key features of envio include: . | Encrypted profiles through passphrase or GPG encryption. See encryption types | Load profiles into your terminal sessions | Persistent environment variables that are available in future sessions | Run programs with your profiles | Importing profiles from a file | Downloading profiles and then importing them | Exporting profiles to a file | . See the installation page for instructions on how to install the tool! . ",
+    "url": "/envio/about/",
+    
+    "relUrl": "/about/"
+  },"1": {
+    "doc": "Build From Source",
+    "title": "Build from source",
+    "content": "Verify that you have Rust installed: . $ rustc --version . If rust is not installed, follow the instructions on the Offical Rust website. Clone this repository: . $ git clone https://github.com/humblepenguinn/envio.git $ cd envio . Build the project: . $ cargo build . Now, Check to see if it worked: . $ cargo run -- version . ",
+    "url": "/envio/build-from-source/#build-from-source",
+    
+    "relUrl": "/build-from-source/#build-from-source"
+  },"2": {
+    "doc": "Build From Source",
+    "title": "Build From Source",
+    "content": " ",
+    "url": "/envio/build-from-source/",
+    
+    "relUrl": "/build-from-source/"
+  },"3": {
+    "doc": "Encryption Types",
+    "title": "Encryption types in envio",
+    "content": "envio provides two types of encryption for users to choose from based on their preferences and needs: . | Passphrase encryption using the age Rust crate. | GPG support, implemented using the gpgme Rust crate on Unix systems and the gpg4win program on Windows. | . ",
+    "url": "/envio/encryption-types/#encryption-types-in-envio",
+    
+    "relUrl": "/encryption-types/#encryption-types-in-envio"
+  },"4": {
+    "doc": "Encryption Types",
+    "title": "Passphrase",
+    "content": "Passphrase encryption using age is the default encryption mechanism used by envio. With passphrase encryption, users need to pass in a key while creating a profile. It is important to remember this key, as it is required to perform any sort of operation on the profile, such as adding environment variables, deleting them, updating them, exporting, etc. If the key is lost, the profile becomes inaccessible, and there is no way to recover the data stored in it. So, it is recommended to keep the key in a safe and secure place, or to use a password manager to store it. ",
+    "url": "/envio/encryption-types/#passphrase",
+    
+    "relUrl": "/encryption-types/#passphrase"
+  },"5": {
+    "doc": "Encryption Types",
+    "title": "GPG",
+    "content": "envio also supports GPG encryption, a widely used encryption tool that allows users to encrypt and sign their files using public-key cryptography. On Unix systems, we use the gpgme Rust crate to provide GPG support. Users need to have the libgpgme-dev and libgpg-error-dev packages installed on their system. These package names are for Ubuntu, and users need to find the equivalent package names for their respective repo. $ sudo apt-get -y update &amp;&amp; sudo apt-get install -y libgpgme-dev libgpg-error-dev . On Windows, we use the gpg4win program to provide GPG support. Users need to have gpg4win installed on their system to use GPG encryption. They can install gpg4win using the chocolatey package manager . $ choco install gpg4win . On macOS, users need to have gnupg and gpgme installed. They can install these tools using Homebrew by running the following commands in the terminal: . $ brew install gnupg gpgme . With envio’s support for both age and GPG, users can choose the encryption method that works best for them, based on their needs and preferences. ",
+    "url": "/envio/encryption-types/#gpg",
+    
+    "relUrl": "/encryption-types/#gpg"
+  },"6": {
+    "doc": "Encryption Types",
+    "title": "Encryption Types",
+    "content": " ",
+    "url": "/envio/encryption-types/",
+    
+    "relUrl": "/encryption-types/"
+  },"7": {
+    "doc": "Welcome to envio",
+    "title": "Welcome to envio",
+    "content": "envio is a CLI tool that helps you manage your environment variables in a secure way using profiles. With envio, you can easily switch between different profiles without worrying about leaking secrets or credentials. Visit the installation page and then the quick start guide to get started using envio! :) . To see the GPG encryption demo go here . ",
+    "url": "/envio/",
+    
+    "relUrl": "/"
+  },"8": {
+    "doc": "Installation",
+    "title": "Installation",
+    "content": "You can install envio through a few methods . Releases . You can head over to the releases page and download the official envio binaries from there for your target operating system. Windows MSI installers are also available . Cargo Repository . You can install envio through the Cargo repository using the following command: . $ cargo install envio . Source . Go here to see how . More methods of installation will be added in the future! . After installing envio, if you would like to use GPG encryption, please refer to the encryption types page and download the necessary dependencies for your system. These dependencies are different depending on the operating system you are using. ",
+    "url": "/envio/installation/",
+    
+    "relUrl": "/installation/"
+  },"9": {
+    "doc": "Profiles",
+    "title": "Profiles",
+    "content": "In envio, a profile is a collection of environment variables that are associated with a specific project, application, or use case. Users can create multiple profiles, each with their own set of environment variables, and easily switch between them as needed. For example, a developer might create a profile for a web development project that includes environment variables for the database connection, API keys, and other project-specific settings. They could then switch to a different profile for a mobile app project that requires a different set of environment variables. The benefit of using profiles is that users can easily manage and switch between different sets of environment variables without having to manually set and unset them every time they switch tasks. Additionally, in envio, profiles are encrypted, so users can rest assured that their sensitive environment variables are secure and require a key to access them. ",
+    "url": "/envio/profiles/",
+    
+    "relUrl": "/profiles/"
+  },"10": {
+    "doc": "Quick Start",
+    "title": "Quickstart Guide",
+    "content": "Visit the installation page to learn how to install envio on your system. ",
+    "url": "/envio/quick-start/#quickstart-guide",
+    
+    "relUrl": "/quick-start/#quickstart-guide"
+  },"11": {
+    "doc": "Quick Start",
+    "title": "Creating a Profile",
+    "content": "Before you can start using envio, you need to create a profile. A profile is a collection of environment variables that you want to manage together. To create a profile, run the following command: . $ envio create &lt;profile_name&gt; . Replace &lt;profile_name&gt; with the name you want to give to your profile. For example: . $ envio create myprofile . By default, envio uses passphrase encryption to protect your profile. After running the above command, envio will prompt you to enter a passphrase to encrypt your profile. Make sure to remember the passphrase as it will be required to decrypt your profile later. If you want to use GPG encryption instead of passphrase encryption, use the following command: . $ envio create &lt;profile_name&gt; -g &lt;gpg_key_fingerprint&gt; . Replace &lt;gpg_key_fingerprint&gt; with the fingerprint of the GPG key you want to use. Or you can replace &lt;gpg_key_fingerprint&gt; with select, this will prompt you with a list of all the public GPG keys available on your system, and you can select the one you want to use. ",
+    "url": "/envio/quick-start/#creating-a-profile",
+    
+    "relUrl": "/quick-start/#creating-a-profile"
+  },"12": {
+    "doc": "Quick Start",
+    "title": "Adding Environment Variables to a Profile",
+    "content": "Once you have created a profile, you can add environment variables to it using the following command: . $ envio add &lt;profile_name&gt; -e &lt;key&gt;=&lt;value&gt; . Replace &lt;profile_name&gt; with the name of the profile you want to add the environment variable to, &lt;key&gt; with the name of the environment variable you want to add, and &lt;value&gt; with the value you want to assign to the environment variable. For example: . $ envio add myprofile -e DATABASE_URL=postgres://localhost/mydb . You can also add multiple environment variables at once: . $ envio add myprofile -e 'DATABASE_URL=postgres://localhost/mydb MY_VERY_SECRETIVE_KEY=1234' . Make sure you include the environment variables you want to add in between quotes, separated by a space. If you have environment variables stored in a file, you can import them using the following command: . $ envio create &lt;profile_name&gt; -f &lt;file_name&gt; . Replace &lt;file_name&gt; with the name of the file containing the environment variables you want to import. ",
+    "url": "/envio/quick-start/#adding-environment-variables-to-a-profile",
+    
+    "relUrl": "/quick-start/#adding-environment-variables-to-a-profile"
+  },"13": {
+    "doc": "Quick Start",
+    "title": "Updating Environment Variables in a Profile",
+    "content": "To update an existing environment variable, use the following command: . $ envio update &lt;profile_name&gt; -e &lt;key&gt;=&lt;new_value&gt; . Replace &lt;profile_name&gt; with the name of the profile you want to update the environment variable in, &lt;key&gt; with the name of the environment variable you want to update, and &lt;new_value&gt; with the new value you want to assign to the environment variable. For example: . $ envio update myprofile -e DATABASE_URL=postgres://myhost/mydb . ",
+    "url": "/envio/quick-start/#updating-environment-variables-in-a-profile",
+    
+    "relUrl": "/quick-start/#updating-environment-variables-in-a-profile"
+  },"14": {
+    "doc": "Quick Start",
+    "title": "Deleting Environment Variables from a Profile",
+    "content": "To delete an environment variable from a profile, use the following command: . $ envio delete &lt;profile_name&gt; -e &lt;key&gt; . Replace &lt;profile_name&gt; with the name of the profile you want . ",
+    "url": "/envio/quick-start/#deleting-environment-variables-from-a-profile",
+    
+    "relUrl": "/quick-start/#deleting-environment-variables-from-a-profile"
+  },"15": {
+    "doc": "Quick Start",
+    "title": "Quick Start",
+    "content": " ",
+    "url": "/envio/quick-start/",
+    
+    "relUrl": "/quick-start/"
+  },"16": {
+    "doc": "Usage",
+    "title": "Usage",
+    "content": "Before reading the usage make sure you understand what profiles (See profiles) are in envio . Each command of envio has its own set of flags that can be used to modify their behavior. These flags have a short form and a long form, and users can choose to use either of them. For instance, the --file-to-import-envs-from flag can be written as -f. Both forms of the flag are equivalent and can be used interchangeably. This document provides examples for each flag with both variants, to make it easy for users to remember and use them. ",
+    "url": "/envio/usage/",
+    
+    "relUrl": "/usage/"
+  },"17": {
+    "doc": "Usage",
+    "title": "Creating a Profile",
+    "content": "To use envio, you first need to create a profile. To create a profile, simply use the envio create command. By default, envio uses passphrase encryption with the help of the age crate to protect your profile. To create a profile with the default passphrase encryption method, use the command: . $ envio create &lt;profile_name&gt; . Replace &lt;profile_name&gt; with the the name of the profile you want to use. $ envio create myprofile . This command will create a new profile called myprofile and prompt you to type in a key. This key will be used later on to encrypt and decrypt your profile, so make sure to remember it. If you want to use a different encryption method, envio also supports GPG encryption. To create a profile with GPG encryption, use the command: . $ envio create &lt;profile_name&gt; -g &lt;gpg_key_fingerprint&gt; . where &lt;gpg_key_fingerprint&gt; is the fingerprint of the GPG key you want to use. Alternatively, you can use the command: . $ envio create &lt;profile_name&gt; -g select . This command will prompt you with a list of all the public GPG keys available on your system, and you can select the one you want to use. It’s important to note that different operating systems require different dependencies to use GPG encryption with envio. For Windows users, you will need to have GPG4Win installed on your system in order to use GPG encryption with envio. For Linux users, the required dependencies for using GPG encryption with envio may vary depending on your specific distribution and setup. To determine which dependencies you need, we recommend visiting the gpgme crate’s GitHub page at https://github.com/gpg-rs/gpgme. On this page, you can find more information about how to install the required dependencies to use the crate. Since the package names may vary on different Linux distributions, it’s important to carefully read the documentation and follow the installation instructions for your particular setup. For macOS users, you will need to have gnupg and gpgme installed on your system. You can install these dependencies using Homebrew, a popular package manager for macOS. ",
+    "url": "/envio/usage/#creating-a-profile",
+    
+    "relUrl": "/usage/#creating-a-profile"
+  },"18": {
+    "doc": "Usage",
+    "title": "Adding Environment Variables to a Profile",
+    "content": "Once you have created a profile, you can use the envio add &lt;profile_name&gt; --envs &lt;key&gt;=&lt;value&gt; command to add enviorment variables to it. to add a variable named DATABASE_URL with a value of postgres://localhost/mydb, you would run the command: . $ envio add myprofile --envs DATABASE_URL=postgres://localhost/mydb . Or . $ envio add myprofile -e DATABASE_URL=postgres://localhost/mydb . You can add multiple environment variables too . $ envio add myprofile -e 'DATABASE_URL=postgres://localhost/mydb MY_VERY_SECRETIVE_KEY=1234' . Make sure you include the environment variables you want to add in between quotes seperated by a space . Instead of creating a profile first and then adding environment variables, users can directly add environment variables when creating a profile using the create command (See create): . $ envio create &lt;profile_name&gt; -e &lt;key&gt;=&lt;value&gt; # OR $ envio create &lt;profile_name&gt; --envs &lt;key&gt;=&lt;value&gt; . Or if you want to use the GPG encryption . $ envio create &lt;profile_name&gt; -e &lt;key&gt;=&lt;value&gt; -g select . They can also import environment variables from a file too . $ envio create &lt;profile_name&gt; -f &lt;file_name&gt; # OR $ envio create &lt;profile_name&gt; --file-to-import-envs-from &lt;file_name&gt; . You can view all the environment variables in your profile using the list command (See List command) . ",
+    "url": "/envio/usage/#adding-environment-variables-to-a-profile",
+    
+    "relUrl": "/usage/#adding-environment-variables-to-a-profile"
+  },"19": {
+    "doc": "Usage",
+    "title": "Updating Environment Variables in a Profile",
+    "content": "To edit an existing variable, you can use the envio update &lt;profile_name&gt; --env &lt;key&gt;=&lt;new_value&gt; command. For example, to change the value of the DATABASE_URL variable in the myprofile profile to postgres://myhost/mydb, you would run the command: . $ envio update myprofile --envs DATABASE_URL=postgres://myhost/mydb # OR $ envio update myprofile -e DATABASE_URL=postgres://myhost/mydb . ",
+    "url": "/envio/usage/#updating-environment-variables-in-a-profile",
+    
+    "relUrl": "/usage/#updating-environment-variables-in-a-profile"
+  },"20": {
+    "doc": "Usage",
+    "title": "Removing Environment Variables in a Profile",
+    "content": "To remove a variable from a profile, use the envio remove &lt;profile_name&gt; --envs-to-remove &lt;key&gt; command. For example, to remove the DATABASE_URL variable from the myprofile profile, you would run the command: . $ envio remove myprofile --envs-to-remove MY_VERY_SECRETIVE_KEY # OR $ envio remove myprofile -e MY_VERY_SECRETIVE_KEY . ",
+    "url": "/envio/usage/#removing-environment-variables-in-a-profile",
+    
+    "relUrl": "/usage/#removing-environment-variables-in-a-profile"
+  },"21": {
+    "doc": "Usage",
+    "title": "Delete a Profile",
+    "content": "If a user wants to delete a entire profile they can use the envio remove command without any flags: . $ envio remove &lt;profile_name&gt; . ",
+    "url": "/envio/usage/#delete-a-profile",
+    
+    "relUrl": "/usage/#delete-a-profile"
+  },"22": {
+    "doc": "Usage",
+    "title": "Loading a Profile",
+    "content": "You can use the envio load &lt;profile_name&gt; command to load the profile and make the environment variables available in your terminal session. $ envio load &lt;profile_name&gt; . On Windows, users just need to reload their shell and they can start using their environment variables as before. However, on Unix-based operating systems, a new approach has been implemented to load the environment variables securely. Whenever users open their shell, envio now asks users for the key used for the profile that was loaded. They have to type in the key to access their environment variables, which are then stored in a temporary file and sourced in the current session. This ensures that the environment variables are loaded securely and are not accessible to anyone without the correct key. Now, . $ echo $DATABASE_URL . ",
+    "url": "/envio/usage/#loading-a-profile",
+    
+    "relUrl": "/usage/#loading-a-profile"
+  },"23": {
+    "doc": "Usage",
+    "title": "Unloading a Profile",
+    "content": "On Windows, to unload a profile from the current session, run the command: . $ envio unload &lt;profile_name&gt; . On Unix-based operating systems, to unload a profile from the current session, run the envio unload command without any arguments: . $ envio unload . ",
+    "url": "/envio/usage/#unloading-a-profile",
+    
+    "relUrl": "/usage/#unloading-a-profile"
+  },"24": {
+    "doc": "Usage",
+    "title": "Launching a Program with a Profile",
+    "content": "The envio launch command allows you to run a program using a specific profile. This is useful when you need to switch between different sets of environment variables for different projects or environments. To use this command, simply run: . $ envio launch &lt;profile_name&gt; &lt;program&gt; . where &lt;profile_name&gt; is the name of the profile you want to use and &lt;program&gt; is the name of the program you want to run and the arguments that you want to pass to the program. For example, if you have a profile called dev with a set of environment variables specific to your development environment, you can run your program with these variables using the following command: . $ envio launch dev python my_program.py . This will run the python my_program.py command with the environment variables from the dev profile. ",
+    "url": "/envio/usage/#launching-a-program-with-a-profile",
+    
+    "relUrl": "/usage/#launching-a-program-with-a-profile"
+  },"25": {
+    "doc": "Usage",
+    "title": "Importing Profiles from the Internet",
+    "content": "Users can download profiles over the internet using the following command: . $ envio import &lt;profile_name_to_save_as&gt; -u &lt;url&gt; # OR $ envio import &lt;profile_name_to_save_as&gt; --url &lt;url&gt; . url should point to a valid URL where the profile can be downloaded. The profile_name_to_save_as argument specifies the name of the profile to save as. ",
+    "url": "/envio/usage/#importing-profiles-from-the-internet",
+    
+    "relUrl": "/usage/#importing-profiles-from-the-internet"
+  },"26": {
+    "doc": "Usage",
+    "title": "Importing Profiles from a File",
+    "content": "Users can also import profiles from a file using the same command as before, but with the url argument replaced by a file path: . $ envio import &lt;profile_name_to_save_as&gt; -f &lt;file_path&gt; # OR $ envio import &lt;profile_name_to_save_as&gt; --file-to-import-from &lt;file_path&gt; . file_path should point to a valid file path where the profile can be found. The profile_name_to_save_as argument specifies the name of the profile to save as. ",
+    "url": "/envio/usage/#importing-profiles-from-a-file",
+    
+    "relUrl": "/usage/#importing-profiles-from-a-file"
+  },"27": {
+    "doc": "Usage",
+    "title": "Exporting Environment Variables from a Profile",
+    "content": "To export all environment variables from a profile, users can run the following command: . $ envio export &lt;profile_name&gt; -f &lt;file_to_export_to&gt; # OR $ envio export &lt;profile_name&gt; --file-to-export-to &lt;file_to_export_to&gt; . If the file_to_export_to argument is not specified, the command will export the environment variables to a file called .env . By exporting and importing environment variables, users can easily share configurations between different machines or team members, or save and load different configurations as needed. ",
+    "url": "/envio/usage/#exporting-environment-variables-from-a-profile",
+    
+    "relUrl": "/usage/#exporting-environment-variables-from-a-profile"
+  },"28": {
+    "doc": "Usage",
+    "title": "List",
+    "content": "You can view all your existing profiles and also all the environment variables in a specific profile . To list all the existing profiles, users can run the following command: . $ envio list -p # OR $ envio list --profiles . To list all the environment variables in a profile, users can run the following command: . $ envio list -n &lt;profile_name&gt; # OR $ envio list --profile-name &lt;profile_name&gt; . Users can also view their profiles and environment variables in a profile without any visual formatting using the --no-pretty-print flag . To list all existing profiles: . $ envio list -p -v # OR $ envio list -p --no-pretty-print . To list all the environment variables in a profile: . $ envio list -n &lt;profile_name&gt; -v . ",
+    "url": "/envio/usage/#list",
+    
+    "relUrl": "/usage/#list"
+  }
+}
