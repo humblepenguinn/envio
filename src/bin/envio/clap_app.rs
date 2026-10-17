@@ -54,15 +54,21 @@ pub enum Command {
         #[arg(
             long = "comments",
             short = 'c',
-            help = "add comments to the provided environment variables"
+            num_args = 0..=1,
+            default_missing_value = "",
+            require_equals = true,
+            help = "add comments to the provided environment variables (optionally provide text, or leave empty to prompt)"
         )]
-        comments: bool,
+        comments: Option<String>,
         #[arg(
             long = "expires",
             short = 'x',
-            help = "add expiration dates to the provided environment variables"
+            num_args = 0..=1,
+            default_missing_value = "",
+            require_equals = true,
+            help = "add expiration dates to the provided environment variables (optionally provide date YYYY-MM-DD, or leave empty to prompt)"
         )]
-        expires: bool,
+        expires: Option<String>,
     },
 
     #[command(
@@ -140,15 +146,15 @@ pub enum Command {
         #[arg(
             long = "comments",
             short = 'c',
-            help = "add comments to the provided environment variables"
+            help = "add comments to the provided environment variables (leave empty to prompt)"
         )]
-        comments: bool,
+        comments: Option<String>,
         #[arg(
             long = "expires",
             short = 'x',
-            help = "add expiration dates to the provided environment variables"
+            help = "add expiration dates to the provided environment variables (leave empty to prompt)"
         )]
-        expires: bool,
+        expires: Option<String>,
     },
 
     #[command(
