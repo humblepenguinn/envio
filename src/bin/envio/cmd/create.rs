@@ -1,6 +1,5 @@
 use std::{io::Read, path::Path};
 
-use chrono::Local;
 use envio::{
     EnvMap,
     cipher::{CipherKind, create_cipher, gpg::get_gpg_keys},
@@ -19,8 +18,8 @@ pub fn run(
     envs: Option<&[String]>,
     envs_file: Option<&str>,
     cipher_kind: Option<&str>,
-    add_comments: bool,
-    add_expires: bool,
+    comment: Option<&str>,
+    expiration: Option<&str>,
 ) -> AppResult<()> {
     config::get_profile_dir()?;
 
@@ -36,7 +35,7 @@ pub fn run(
 
     let mut envs_map = build_envs_map(envs, envs_file)?;
 
-    annotate_envs(&mut envs_map, add_comments, add_expires)?;
+    annotate_envs(&mut envs_map, comment, expiration)?;
 
     let profile = profile_ops::create_profile(
         profile_name.to_string(),
@@ -197,20 +196,28 @@ fn build_envs_map(envs: Option<&[String]>, envs_file: Option<&str>) -> AppResult
     Ok(EnvMap::default())
 }
 
-fn annotate_envs(envs_map: &mut EnvMap, add_comments: bool, add_expires: bool) -> AppResult<()> {
+fn annotate_envs(envs_map: &mut EnvMap, comment: Option<&str>, expiration: Option<&str>) -> AppResult<()> {
     for env in envs_map.iter_mut() {
-        if add_comments {
-            env.comment = Some(prompts::text_prompt(prompts::TextPromptOptions {
-                title: format!("Enter a comment for '{}':", env.key),
-                default: None,
-            })?);
+        if let Some(text) = comment {
+            if !text.is_empty() {
+                env.comment = Some(text.to_string());
+            } else if let Some(prompted) = prompts::text_prompt_if_needed(format!(
+                "Enter a comment for '{}' (or leave empty):",
+                env.key
+            ))? {
+                env.comment = Some(prompted);
+            }
         }
 
-        if add_expires {
-            env.expiration_date = Some(prompts::date_prompt(prompts::DatePromptOptions {
-                title: format!("Select an expiration date for '{}':", env.key),
-                default: Some(Local::now().date_naive()),
-            })?);
+        if let Some(date_str) = expiration {
+            if !date_str.is_empty() {
+                env.expiration_date = Some(chrono::NaiveDate::parse_from_str(date_str, "%Y-%m-%d")?);
+            } else if let Some(prompted) = prompts::date_prompt_if_needed(format!(
+                "Select an expiration date for '{}' (or press Enter to skip):",
+                env.key
+            ))? {
+                env.expiration_date = Some(prompted);
+            }
         }
     }
 

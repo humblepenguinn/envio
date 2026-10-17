@@ -46,8 +46,8 @@ impl ClapApp {
                 envs.as_deref(),
                 envs_file.as_deref(),
                 cipher_kind.as_deref(),
-                *comments,
-                *expires,
+                comments.as_deref(),
+                expires.as_deref(),
             ),
             Command::Edit { profile_name } => edit::run(profile_name),
             Command::Set {
@@ -55,7 +55,7 @@ impl ClapApp {
                 envs,
                 comments,
                 expires,
-            } => set::run(profile_name, envs, *comments, *expires),
+            } => set::run(profile_name, envs, comments.as_deref(), expires.as_deref()),
             Command::Unset { profile_name, keys } => unset::run(profile_name, keys),
             Command::Show {
                 profile_name,

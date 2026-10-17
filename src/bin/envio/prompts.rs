@@ -142,6 +142,33 @@ pub fn date_prompt(options: DatePromptOptions) -> AppResult<chrono::NaiveDate> {
         .prompt()?)
 }
 
+/// Prompt for text only if the user provides a non-empty response.
+/// Returns None if the user pressed Enter without typing anything.
+pub fn text_prompt_if_needed(title: String) -> AppResult<Option<String>> {
+    let prompt = Text::new(&title);
+    let result = prompt.prompt()?;
+    if result.is_empty() {
+        Ok(None)
+    } else {
+        Ok(Some(result))
+    }
+}
+
+/// Prompt for date only if the user provides a non-empty response.
+/// Returns None if the user pressed Enter without selecting.
+pub fn date_prompt_if_needed(title: String) -> AppResult<Option<chrono::NaiveDate>> {
+    let prompt = DateSelect::new(&title)
+        .with_default(chrono::Local::now().date_naive());
+    match prompt.prompt() {
+        Ok(date) => Ok(Some(date)),
+        Err(inquire::errors::PromptError::OperationCanceled) | Err(inquire::errors::PromptError::InvalidInteraction) => {
+            // If the user cancelled/pressed escape, treat as None
+            Ok(None)
+        }
+        Err(e) => Err(AppResult::<chrono::NaiveDate>::Err(e).unwrap_err()),
+    }
+}
+
 pub struct MultiSelectPromptOptions<T> {
     pub title: String,
     pub options: Vec<T>,
